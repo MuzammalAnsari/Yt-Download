@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "YouTube Format Downloader",
+  "version": "1.1",
+  "description": "Paste a YouTube URL, or click the YouTube button to download videos in your preferred format.",
+  "permissions": ["downloads", "storage", "activeTab", "scripting", "tabs"],
+  "host_permissions": ["http://localhost:3000/*"],
+  "background": {
+    "service_worker": "service-worker.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://www.youtube.com/watch*"],
+      "js": ["content.js"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "web_accessible_resources": [{
+  "resources": ["popup.html", "popup.js", "popup.css"],
+  "matches": ["<all_urls>"]
+}]
+
+}
